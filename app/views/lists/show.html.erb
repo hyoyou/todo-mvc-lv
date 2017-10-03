@@ -31,8 +31,17 @@
         </div>
       </li> -->
       <% @list.items.each do |item| %>
-      <li>
+      <li class="<%= "completed" if item.complete? %>">
         <div class="view">
+          <%= form_for([@list, item]) do |f| %>
+            <!-- <input class="toggle" type="checkbox" <%= "checked='checked'" if item.complete? %>> -->
+            <%= f.check_box :status, :class => "toggle", :checked => (true if item.complete?) %>
+            <!-- This is what we get
+            <input name="item[status]" type="hidden" value="0"> what happens when incomplete
+            <input class="toggle" type="checkbox" value="1" name="item[status]" id="item_status" what is submitted/overridden when complete
+            -->
+          <% end %>
+
           <label><%= item.description %></label>
         </div>
       </li>

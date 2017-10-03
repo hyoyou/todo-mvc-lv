@@ -11,7 +11,8 @@ class ListsController < ApplicationController
     # I need to load the list
     # params have all the data passed on by the user
     @list = List.find(params[:id])
-    @item = @list.items.build #build method provided by has_many association
+    # @item = @list.items.build #build method provided by has_many association
+    @item = Item.new
   end
 
   # We don't have a #new action because it is provided by the #index action

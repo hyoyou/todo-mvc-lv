@@ -32,9 +32,12 @@ Look for the nouns in the story: lists, items
 [X] / - create a list
 [X] / - show a list
 
-Want to make each list on the index page a link.
-Q: Does it impact the DB? No.
-Q: Does it impact my URLS? Yes. '/lists/1'
+  Want to make each list on the index page a link.
+  Q: Does it impact the DB?
+  A: No.
+
+  Q: Does it impact my URLS?
+  A: Yes. '/lists/1'
 
 
 2 Helpers in Rails:
@@ -62,21 +65,22 @@ Q: Does it impact my URLS? Yes. '/lists/1'
 
       -> rails generate model item description
 
-    Q: Does it impact the DB? Yes. I probably need an items table - associated with a list
-
-    When setting up db, think about 2 things:
+    Q: Does it impact the DB?
+    A: Yes. I probably need an items table - associated with a list
+      When setting up db, think about 2 things:
       # Wiring the schema -- The database - FK (foreign key)
       # Wiring my model with the association
 
-    Q: Does it impact my URLS? No. Will be build directly on list show page
+    Q: Does it impact my URLS?
+    A: No. Will be build directly on list show page
 
-      CREATE ACTION for an ITEM in a LIST - What is the URL / HTTP method for that?
-      - The form is already present in the list show page
-      - What URL does this form imply?
-        POST /items #=> Doesn't describe which list we're adding an item to.
-      - An item doesn't exist in our application outside of the context of the list it belongs to => Nested Resource
-        POST /lists/:id/items
-        items are nested under URLS of their parent list
+    CREATE ACTION for an ITEM in a LIST - What is the URL / HTTP method for that?
+    - The form is already present in the list show page
+    - What URL does this form imply?
+      POST /items #=> Doesn't describe which list we're adding an item to.
+    - An item doesn't exist in our application outside of the context of the list it belongs to => Nested Resource
+      POST /lists/:id/items
+      items are nested under URLS of their parent list
 
 # Step 4: Add Validations
 
@@ -86,6 +90,31 @@ Q: Does it impact my URLS? Yes. '/lists/1'
         - in console, errors.local_methods shows we have a #full_messages_for(:attribute)
       - Add some styling in /assets/stylesheets/lists.scss (also need to require in application.css)
 
-# Step 5: Add Status (Complete/Incomplete)
+# Step 5: Add Status (Complete/Incomplete) to Items in a List
+
+[X] / - Add status
+
+  Want to give checkbox for complete and incomplete items.
+    Q: Does it impact the DB?
+    A: Yes. The idea of an item being complete or incomplete require data.
+      Add an integer column called status:
+      0 = incomplete
+      1 = complete
+
+    Q: Does it impact my URLS?
+    A: Yes. New forms for updating the status of an item, which means new URL
+    /lists/1/items
+      PUT/PATCH to /lists/1/items/1
+
+[X] / - Add checkbox, take from TodoMVC, add to view
+      <input class="toggle" type="checkbox">
+
+[X] / - Add JS function to submit the form when you click the checkbox
+      $(function(){
+        $("input.toggle").on("change", function(){
+          $(this).parents("form").trigger("submit")
+        })
+      });
+
 
 # Step Whatever: Fix Down Arrow on Make a List Form

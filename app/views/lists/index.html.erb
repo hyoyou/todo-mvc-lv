@@ -42,7 +42,7 @@
     <label for="toggle-all">Mark all as complete</label>
     <ul class="todo-list">
       <% @lists.each do |list| %>
-      <li>
+      <li class="completed">
         <div class="view">
           <!-- 1. <label><a href="#"><%= list.name %></a></label> -->
           <label><%= link_to list.name, list_path(list) %></label>
