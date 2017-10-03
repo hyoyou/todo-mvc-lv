@@ -3,15 +3,25 @@
   <header class="header">
     <!-- 1. <h1>Shopping List</h1> Manually stubbing out list -->
     <h1><%= @list.name %></h1>
-    <input class="new-todo" placeholder="Add an item..." autofocus="">
+    <!-- 1. Copy code from #index -->
+    <!-- 2. <%#= form_for(Item.new) do |f| %> this tries to call items_path method <form action="/lists" method="POST"> -->
+    <!-- 3. <%#= form_for(Item.new, :url => list_items_path(@list)) do |f| %> don't want to refer to model -->
+    <!-- 4. <%#= form_for(@item, :url => list_items_path(@list)) do |f| %> there is a better way to "automagically" generate this -->
+    <%= form_for([@list, @item]) do |f| %>
+      <!-- taken from index.html.erb, update :name to :description, @list to @item etc.. -->
+      <!--                                                                  returns the error messages                         or "Enter a new item..." -->
+      <%= f.text_field :description, :class => "new-todo", :placeholder => (@item.errors.full_messages_for(:description).first || "Enter a new item...") %>
+      <%= f.submit :style => "display: none" %>
+    <% end %>
   </header>
   <section class="main">
     <input class="toggle-all" type="checkbox">
     <label for="toggle-all">Mark all as complete</label>
     <ul class="todo-list">
+      <!-- 1. Manually stub out items:
       <li>
         <div class="view">
-          <!-- Manually stub out items -->
+
           <label>Milk</label>
         </div>
       </li>
@@ -19,7 +29,14 @@
         <div class="view">
           <label>Cookies</label>
         </div>
+      </li> -->
+      <% @list.items.each do |item| %>
+      <li>
+        <div class="view">
+          <label><%= item.description %></label>
+        </div>
       </li>
+      <% end %>
     </ul>
   </section>
   <footer class="footer">

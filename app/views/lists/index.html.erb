@@ -2,11 +2,13 @@
 <section class="todoapp">
   <header class="header">
     <h1>Your Lists</h1>
-    <%= form_for(@list) do |f| %>
-      <%= f.text_field :name, :class => "new-todo" %>
-      <%= f.submit :style => "display: none" %>
-    <% end %>
-    <!-- the form_for generates:
+    <!-- <%# raise @list.errors.inspect %> to check error message -->
+    <!-- 1. Generate text_field for new list name
+    <%#= form_for(@list) do |f| %>
+      <%#= f.text_field :name, :class => "new-todo" %>
+      <%#= f.submit :style => "display: none" %>
+    <%# end %>
+    this form_for generates:
                                      params[:list][:name]
     <form class="new_todo" type="text" name="list[name]" id="list_name">
 
@@ -17,7 +19,22 @@
       }
     }
     -->
-
+    <!-- 2. add in error/validations
+    <%#= form_for(@list) do |f| %>
+      <%# if @list.errors[:name].present? %>
+        <%#= f.text_field :name, :class => "new-todo", :placeholder => "Lists must have a name..." %>
+      <%# else %>
+        <%#= f.text_field :name, :class => "new-todo" %>
+      <%# end %>
+      <%#= f.submit :style => "display: none" %>
+    <%# end %>
+    -->
+    <!-- 3. Want to clean it up a bit -->
+    <%= form_for(@list) do |f| %>
+      <!--                                                          returns the error messages                   or "Enter a new list name..." -->
+      <%= f.text_field :name, :class => "new-todo", :placeholder => (@list.errors.full_messages_for(:name).first || "Enter a new list name...") %>
+      <%= f.submit :style => "display: none" %>
+    <% end %>
 </form>
   </header>
   <section class="main">
