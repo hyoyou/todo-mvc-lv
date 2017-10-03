@@ -1650,3 +1650,342 @@ Processing by ListsController#show as HTML
   [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."list_id" = ?  [["list_id", 4]]
   Rendered lists/show.html.erb within layouts/application (3.8ms)
 Completed 200 OK in 25ms (Views: 22.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/lists/4" for ::1 at 2017-10-03 18:55:17 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mList Load (0.7ms)[0m  SELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mItem Load (0.8ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."list_id" = ?[0m  [["list_id", 4]]
+  Rendered items/_item_li.html.erb (39.6ms)
+  Rendered lists/show.html.erb within layouts/application (91.6ms)
+Completed 500 Internal Server Error in 151ms (ActiveRecord: 2.2ms)
+
+ActionView::Template::Error (undefined local variable or method `item' for #<#<Class:0x007f852ea8cef0>:0x007f852ea77bb8>
+Did you mean?  @item):
+    1: <li class="<%= "completed" if item.complete? %>">
+    2:   <div class="view">
+    3:     <%= form_for([@list, item]) do |f| %>
+    4:       <!-- <input class="toggle" type="checkbox" <%= "checked='checked'" if item.complete? %>> -->
+  app/views/items/_item_li.html.erb:1:in `_app_views_items__item_li_html_erb__4600023611559823339_70105002086380'
+  app/views/lists/show.html.erb:53:in `block in _app_views_lists_show_html_erb___3392672414230520897_70104994882160'
+  app/views/lists/show.html.erb:34:in `_app_views_lists_show_html_erb___3392672414230520897_70104994882160'
+
+
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (17.1ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.6ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (127.3ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (83.3ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (197.6ms)
+
+
+Started GET "/lists/4" for ::1 at 2017-10-03 18:55:52 -0400
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mList Load (0.2ms)[0m  SELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."list_id" = ?[0m  [["list_id", 4]]
+  Rendered items/_item_li.html.erb (12.2ms)
+  Rendered items/_item_li.html.erb (0.9ms)
+  Rendered lists/show.html.erb within layouts/application (23.2ms)
+Completed 200 OK in 326ms (Views: 320.5ms | ActiveRecord: 0.4ms)
+
+
+Started PATCH "/lists/4/items/7" for ::1 at 2017-10-03 18:55:56 -0400
+Processing by ItemsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0ylCKzJcrg8RhkJ/x8sRs2oTqAJYcIOahcrSvFe7SoMtMwNFHwZv9ALen7AeCJJMcYyybW+LYQrPh0i+f9Jh+A==", "item"=>{"status"=>"0"}, "list_id"=>"4", "id"=>"7"}
+  [1m[35mItem Load (0.3ms)[0m  SELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", 7]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "items" SET "status" = ?, "updated_at" = ? WHERE "items"."id" = ?  [["status", 0], ["updated_at", "2017-10-03 22:55:56.891784"], ["id", 7]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mList Load (0.1ms)[0m  SELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1  [["id", 4]]
+Redirected to http://localhost:3000/lists/4
+Completed 302 Found in 11ms (ActiveRecord: 2.2ms)
+
+
+Started GET "/lists/4" for ::1 at 2017-10-03 18:55:56 -0400
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mList Load (0.1ms)[0m  [1mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."list_id" = ?  [["list_id", 4]]
+  Rendered items/_item_li.html.erb (1.2ms)
+  Rendered items/_item_li.html.erb (1.0ms)
+  Rendered lists/show.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 41ms (Views: 38.0ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/lists/4/items/6" for ::1 at 2017-10-03 18:55:59 -0400
+Processing by ItemsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bAroevypkUTLMQAqz3O9SK4doBk6m1OXe7EDRI/rd0mSEKkU0fNQv9hp3eUWsD63tYK6dg1gsQcx/JlGp4JcMg==", "item"=>{"status"=>"0"}, "list_id"=>"4", "id"=>"6"}
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "items" SET "status" = ?, "updated_at" = ? WHERE "items"."id" = ?[0m  [["status", 0], ["updated_at", "2017-10-03 22:55:59.452622"], ["id", 6]]
+  [1m[35m (2.4ms)[0m  commit transaction
+  [1m[36mList Load (0.2ms)[0m  [1mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1[0m  [["id", 4]]
+Redirected to http://localhost:3000/lists/4
+Completed 302 Found in 9ms (ActiveRecord: 3.2ms)
+
+
+Started GET "/lists/4" for ::1 at 2017-10-03 18:55:59 -0400
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mList Load (0.3ms)[0m  SELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."list_id" = ?[0m  [["list_id", 4]]
+  Rendered items/_item_li.html.erb (0.7ms)
+  Rendered items/_item_li.html.erb (0.7ms)
+  Rendered lists/show.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 29ms (Views: 26.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/lists/4" for ::1 at 2017-10-03 19:01:03 -0400
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mList Load (0.8ms)[0m  SELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."list_id" = ?[0m  [["list_id", 4]]
+  Rendered items/_item_li.html.erb (3.0ms)
+  Rendered items/_item_li.html.erb (1.2ms)
+  Rendered lists/show.html.erb within layouts/application (24.9ms)
+Completed 200 OK in 101ms (Views: 68.3ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/lists/4" for ::1 at 2017-10-03 19:03:32 -0400
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mList Load (0.2ms)[0m  SELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."list_id" = ?[0m  [["list_id", 4]]
+  Rendered items/_item_li.html.erb (2.1ms)
+  Rendered lists/show.html.erb within layouts/application (9.3ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.4ms)
+
+SyntaxError (/Users/hyojeong/Development/code/todo-mvc-lv/app/views/items/_item_li.html.erb:18: syntax error, unexpected keyword_ensure, expecting keyword_end
+/Users/hyojeong/Development/code/todo-mvc-lv/app/views/items/_item_li.html.erb:20: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/views/items/_item_li.html.erb:18: syntax error, unexpected keyword_ensure, expecting keyword_end
+  app/views/items/_item_li.html.erb:20: syntax error, unexpected end-of-input, expecting keyword_end
+  app/views/lists/show.html.erb:53:in `block in _app_views_lists_show_html_erb___3392672414230520897_70105029261680'
+  app/views/lists/show.html.erb:34:in `_app_views_lists_show_html_erb___3392672414230520897_70105029261680'
+
+
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (15.7ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.5ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (103.6ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (79.9ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (2.3ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (170.5ms)
+
+
+Started GET "/lists/4" for ::1 at 2017-10-03 19:04:27 -0400
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mList Load (0.3ms)[0m  SELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."list_id" = ?[0m  [["list_id", 4]]
+  Rendered items/_item_li.html.erb (2.9ms)
+  Rendered items/_item_li.html.erb (1.8ms)
+  Rendered lists/show.html.erb within layouts/application (16.9ms)
+Completed 200 OK in 60ms (Views: 55.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/lists/4" for ::1 at 2017-10-03 19:08:32 -0400
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mList Load (0.9ms)[0m  SELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered lists/show.html.erb within layouts/application (13.2ms)
+Completed 500 Internal Server Error in 49ms (ActiveRecord: 0.9ms)
+
+SyntaxError (/Users/hyojeong/Development/code/todo-mvc-lv/app/views/lists/show.html.erb:64: syntax error, unexpected keyword_ensure, expecting keyword_end
+/Users/hyojeong/Development/code/todo-mvc-lv/app/views/lists/show.html.erb:66: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/views/lists/show.html.erb:64: syntax error, unexpected keyword_ensure, expecting keyword_end
+  app/views/lists/show.html.erb:66: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (13.5ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.4ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.6ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (130.6ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.8ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (75.3ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.9ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (178.0ms)
+
+
+Started GET "/lists/4" for ::1 at 2017-10-03 19:09:15 -0400
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mList Load (0.6ms)[0m  [1mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered lists/show.html.erb within layouts/application (6.4ms)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.6ms)
+
+SyntaxError (/Users/hyojeong/Development/code/todo-mvc-lv/app/views/lists/show.html.erb:64: syntax error, unexpected keyword_ensure, expecting keyword_end
+/Users/hyojeong/Development/code/todo-mvc-lv/app/views/lists/show.html.erb:66: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/views/lists/show.html.erb:64: syntax error, unexpected keyword_ensure, expecting keyword_end
+  app/views/lists/show.html.erb:66: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (10.3ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.9ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (91.6ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (77.9ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.8ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (167.4ms)
+
+
+Started GET "/lists/4" for ::1 at 2017-10-03 19:10:30 -0400
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mList Load (0.3ms)[0m  SELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered lists/show.html.erb within layouts/application (146.1ms)
+Completed 500 Internal Server Error in 159ms (ActiveRecord: 0.3ms)
+
+ActionView::Template::Error (undefined local variable or method `partial' for #<#<Class:0x007f852f739888>:0x007f852e5ce580>):
+    54:       <%# end %>
+    55:       -->
+    56:       <!-- 2. Wrap the whole iteration into below code -->
+    57:       <%= render :collection => @list.items, partial => "items/item_li", :as => :item %>
+    58:     </ul>
+    59:   </section>
+    60:   <footer class="footer">
+  app/views/lists/show.html.erb:57:in `_app_views_lists_show_html_erb___3392672414230520897_70104992606420'
+
+
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (10.1ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.3ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (87.2ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.9ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (74.1ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.8ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (168.0ms)
+
+
+Started GET "/lists/4" for ::1 at 2017-10-03 19:32:07 -0400
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mList Load (2.0ms)[0m  [1mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mItem Load (0.4ms)[0m  SELECT "items".* FROM "items" WHERE "items"."list_id" = ?  [["list_id", 4]]
+  Rendered items/_item_li.html.erb (5.7ms)
+  Rendered lists/show.html.erb within layouts/application (28.0ms)
+Completed 200 OK in 93ms (Views: 76.2ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/lists/4" for ::1 at 2017-10-03 19:50:35 -0400
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mList Load (0.3ms)[0m  [1mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."list_id" = ?  [["list_id", 4]]
+  Rendered items/_item_li.html.erb (3.9ms)
+  Rendered lists/show.html.erb within layouts/application (26.2ms)
+Completed 500 Internal Server Error in 80ms (ActiveRecord: 2.6ms)
+
+SyntaxError (/Users/hyojeong/Development/code/todo-mvc-lv/app/views/items/_item_li.html.erb:21: syntax error, unexpected keyword_ensure, expecting end-of-input):
+  app/views/items/_item_li.html.erb:21: syntax error, unexpected keyword_ensure, expecting end-of-input
+  app/views/lists/show.html.erb:57:in `_app_views_lists_show_html_erb___3392672414230520897_70105041583980'
+
+
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.2ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.1ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (88.1ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.3ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (87.8ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (193.6ms)
+
+
+Started GET "/lists/4" for ::1 at 2017-10-03 19:50:58 -0400
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mList Load (0.2ms)[0m  [1mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."list_id" = ?  [["list_id", 4]]
+  Rendered items/_item_li.html.erb (2.8ms)
+  Rendered lists/show.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 52ms (Views: 49.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/lists/4" for ::1 at 2017-10-03 19:53:45 -0400
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mList Load (0.3ms)[0m  [1mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."list_id" = ?  [["list_id", 4]]
+  Rendered items/_item_li.html.erb (3.9ms)
+  Rendered lists/show.html.erb within layouts/application (26.2ms)
+Completed 500 Internal Server Error in 69ms (ActiveRecord: 2.1ms)
+
+SyntaxError (/Users/hyojeong/Development/code/todo-mvc-lv/app/views/items/_item_li.html.erb:25: syntax error, unexpected keyword_ensure, expecting keyword_end
+/Users/hyojeong/Development/code/todo-mvc-lv/app/views/items/_item_li.html.erb:27: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/views/items/_item_li.html.erb:25: syntax error, unexpected keyword_ensure, expecting keyword_end
+  app/views/items/_item_li.html.erb:27: syntax error, unexpected end-of-input, expecting keyword_end
+  app/views/lists/show.html.erb:57:in `_app_views_lists_show_html_erb___3392672414230520897_70105041583980'
+
+
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (55.6ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.6ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (146.8ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (74.0ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (180.4ms)
+
+
+Started GET "/lists/4" for ::1 at 2017-10-03 19:54:15 -0400
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mList Load (0.4ms)[0m  [1mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."list_id" = ?  [["list_id", 4]]
+  Rendered items/_item_li.html.erb (3.2ms)
+  Rendered lists/show.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 62ms (Views: 58.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/lists/4" for ::1 at 2017-10-03 19:55:07 -0400
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mList Load (0.2ms)[0m  [1mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mItem Load (0.7ms)[0m  SELECT "items".* FROM "items" WHERE "items"."list_id" = ?  [["list_id", 4]]
+  Rendered items/_item_li.html.erb (3.0ms)
+  Rendered lists/show.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 42ms (Views: 39.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/lists/4" for ::1 at 2017-10-03 19:56:09 -0400
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mList Load (0.1ms)[0m  [1mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."list_id" = ?  [["list_id", 4]]
+  Rendered items/_item_li.html.erb (1.9ms)
+  Rendered lists/show.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 51ms (Views: 48.6ms | ActiveRecord: 0.3ms)

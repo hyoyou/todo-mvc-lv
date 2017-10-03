@@ -30,22 +30,31 @@
           <label>Cookies</label>
         </div>
       </li> -->
-      <% @list.items.each do |item| %>
-      <li class="<%= "completed" if item.complete? %>">
+      <!-- 2. Make it dynamic -->
+      <!-- 3. Wrap up everything into a render call
+      <%# @list.items.each do |item| %>
+      1. Build out a working form
+      <li class="<%#= "completed" if item.complete? %>">
         <div class="view">
-          <%= form_for([@list, item]) do |f| %>
-            <!-- <input class="toggle" type="checkbox" <%= "checked='checked'" if item.complete? %>> -->
-            <%= f.check_box :status, :class => "toggle", :checked => (true if item.complete?) %>
-            <!-- This is what we get
+          <%#= form_for([@list, item]) do |f| %>
+
+            #<input class="toggle" type="checkbox" <%#= "checked='checked'" if item.complete? %>>
+            ** above code is html, we refactor into ruby code below:
+            <%#= f.check_box :status, :class => "toggle", :checked => (true if item.complete?) %>
+            #This is what we get in browser
             <input name="item[status]" type="hidden" value="0"> what happens when incomplete
             <input class="toggle" type="checkbox" value="1" name="item[status]" id="item_status" what is submitted/overridden when complete
-            -->
-          <% end %>
+          <%# end %>
 
-          <label><%= item.description %></label>
+          <label><%#= item.description %></label>
         </div>
       </li>
-      <% end %>
+      2. Move it into items/_item.li.html.erb partial
+        <%#= render :partial => "items/item_li", :locals => {:item => item} %>
+      <%# end %>
+      -->
+      <!-- 2. Wrap the whole iteration into below code -->
+      <%= render :collection => @list.items, :partial => "items/item_li", :as => :item %>
     </ul>
   </section>
   <footer class="footer">

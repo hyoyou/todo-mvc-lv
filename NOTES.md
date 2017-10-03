@@ -116,5 +116,10 @@ Look for the nouns in the story: lists, items
         })
       });
 
+# Step 6: Refactor lists/show View
+
+[X] / - Add partials to handle the logic
+
+# Step 7: Deleting Items for a List
 
 # Step Whatever: Fix Down Arrow on Make a List Form

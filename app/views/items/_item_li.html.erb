@@ -1,0 +1,23 @@
+<!-- 1. Initial working code
+<li class="<%#= "completed" if item.complete? %>">
+-->
+<!-- 2. Build a view helper in helpers/items_helper.rb
+<li class="<%#= li_class_for_item(item) %>">
+-->
+<!-- 3. Use content_tag_for for language consistency
+<%#= content_tag_for :li, item, :class => li_class_for_item(item) do %>
+-->
+<!-- 4. Build a helper method -->
+<%= li_for_item(item) do %>
+  <div class="view">
+    <!-- 1. Original working code
+    <%#= form_for([@list, item]) do |f| %>
+      <%#= f.check_box :status, :class => "toggle", :checked => item.complete? %>
+    <%# end %>
+    -->
+    <!-- 2. Build a helper -->
+    <%= form_for_item_status(item) %>
+
+    <label><%= item.description %></label>
+  </div>
+<% end %>
