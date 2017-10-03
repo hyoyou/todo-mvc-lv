@@ -1,3 +1,4 @@
+<!-- HTML code copied from http://todomvc.com/examples/vanillajs/ -->
 <section class="todoapp">
   <header class="header">
     <h1>Your Lists</h1>
@@ -5,6 +6,17 @@
       <%= f.text_field :name, :class => "new-todo" %>
       <%= f.submit :style => "display: none" %>
     <% end %>
+    <!-- the form_for generates:
+                                     params[:list][:name]
+    <form class="new_todo" type="text" name="list[name]" id="list_name">
+
+    list[name] #=>
+    params = {
+      :list => {
+        :name => " "
+      }
+    }
+    -->
 
 </form>
   </header>
@@ -15,6 +27,7 @@
       <% @lists.each do |list| %>
       <li>
         <div class="view">
+          <!-- 1. <label><a href="#"><%= list.name %></a></label> -->
           <label><%= link_to list.name, list_path(list) %></label>
         </div>
       </li>
