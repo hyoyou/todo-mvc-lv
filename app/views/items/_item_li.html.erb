@@ -19,5 +19,21 @@
     <%= form_for_item_status(item) %>
 
     <label><%= item.description %></label>
+
+    <!-- 1. Build out a delete button, but Rails rejects this form submission because the vanilla HTML is deemed insecure
+    <form action="<%#= list_item_path(item.list, item) %>" method="POST">
+      <input type="hidden" name="_method" value="DELETE" />
+      <button type="submit" class="destroy"></button>
+    </form>
+    -->
+    <!-- 2. Build it using Rails form_tag helper -->
+    <%#= form_tag(list_item_path(item.list, item), :method => :delete) do %>
+      <!-- 1. Build button
+      <button type="submit" class="destroy"></button>
+      -->
+    <%# end %>
+    <!-- 2. Use button_to macro -->
+    <%= button_to "x", list_item_path(item.list, item), :method => "delete", :class => "destroy" %>
+
   </div>
 <% end %>

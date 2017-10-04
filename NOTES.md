@@ -14,7 +14,9 @@ Look for the nouns in the story: lists, items
 
 [X] / - Copy CSS from         https://github.com/tastejs/todomvc/blob/gh-pages/examples/vanillajs/node_modules/todomvc-app-css/index.css
 & drop into app/assets/stylesheets/todomvc-base.css
+
 [X] / - Order of css matters in application.css
+
 [X] / - And see a stubbed out, non-dynamic, page with the theme.
 
 # Step 2: Allow people to CRUD lists
@@ -28,8 +30,11 @@ Look for the nouns in the story: lists, items
       #index
       - see all their lists
       - doubling as my #new action in that it is presenting the person with a form to create a new list
+
 [X] / - index all the lists...
+
 [X] / - create a list
+
 [X] / - show a list
 
   Want to make each list on the index page a link.
@@ -85,6 +90,7 @@ Look for the nouns in the story: lists, items
 # Step 4: Add Validations
 
 [X] / - Add validations to models
+
 [X] / - Error messages
       - Rails gives us <div class="field_with_errors">
         - in console, errors.local_methods shows we have a #full_messages_for(:attribute)
@@ -121,5 +127,14 @@ Look for the nouns in the story: lists, items
 [X] / - Add partials to handle the logic
 
 # Step 7: Deleting Items for a List
+
+[X] / - Need a new button or link for the delete
+      - That needs to hit some sort of URL (look that up)
+      - RESTful conventions /lists/:list_id/items/:id => items#destroy
+      - How do we trigger a DELETE request? links are GET requests
+      - Browsers only support GET and POST, so we need to fake it somehow
+        low level request -> <button class="destroy"></button>
+
+[X] / - Need a controller action to process the deleting of the item
 
 # Step Whatever: Fix Down Arrow on Make a List Form

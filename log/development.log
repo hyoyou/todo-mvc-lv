@@ -1989,3 +1989,206 @@ Processing by ListsController#show as HTML
   Rendered items/_item_li.html.erb (1.9ms)
   Rendered lists/show.html.erb within layouts/application (7.0ms)
 Completed 200 OK in 51ms (Views: 48.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/lists/4" for ::1 at 2017-10-03 20:09:58 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mList Load (0.7ms)[0m  SELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mItem Load (0.7ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."list_id" = ?[0m  [["list_id", 4]]
+  Rendered items/_item_li.html.erb (6.7ms)
+  Rendered lists/show.html.erb within layouts/application (73.5ms)
+Completed 200 OK in 518ms (Views: 458.3ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/lists/4" for ::1 at 2017-10-03 20:09:59 -0400
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mList Load (0.2ms)[0m  SELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."list_id" = ?[0m  [["list_id", 4]]
+  Rendered items/_item_li.html.erb (4.0ms)
+  Rendered lists/show.html.erb within layouts/application (11.1ms)
+Completed 200 OK in 47ms (Views: 44.1ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/lists/4/items/6" for ::1 at 2017-10-03 20:10:02 -0400
+Processing by ItemsController#destroy as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"QC9SO+bdLMRgV8BcWwHBytY4LdibFds8hmGV1yg0gS++NRNVy4ftP3MPHZOCwkI1zac3t6zuOazMLA/VAF2qVA==", "list_id"=>"4", "id"=>"6"}
+  [1m[35mItem Load (0.3ms)[0m  SELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  DELETE FROM "items" WHERE "items"."id" = ?  [["id", 6]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mList Load (0.2ms)[0m  SELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1  [["id", 4]]
+Redirected to http://localhost:3000/lists/4
+Completed 302 Found in 9ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/lists/4" for ::1 at 2017-10-03 20:10:02 -0400
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mList Load (0.2ms)[0m  [1mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."list_id" = ?  [["list_id", 4]]
+  Rendered items/_item_li.html.erb (1.3ms)
+  Rendered lists/show.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 29ms (Views: 26.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/lists/4" for ::1 at 2017-10-03 20:14:11 -0400
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mList Load (0.8ms)[0m  [1mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."list_id" = ?  [["list_id", 4]]
+  Rendered items/_item_li.html.erb (94.5ms)
+  Rendered lists/show.html.erb within layouts/application (117.3ms)
+Completed 500 Internal Server Error in 158ms (ActiveRecord: 1.0ms)
+
+SyntaxError (/Users/hyojeong/Development/code/todo-mvc-lv/app/views/items/_item_li.html.erb:36: syntax error, unexpected ',', expecting ')'
+...ist_item_path(item.list, item), :method => :delete, class: =...
+...                               ^
+/Users/hyojeong/Development/code/todo-mvc-lv/app/views/items/_item_li.html.erb:39: syntax error, unexpected keyword_end, expecting ')'
+'.freeze; end 
+             ^
+/Users/hyojeong/Development/code/todo-mvc-lv/app/views/items/_item_li.html.erb:41: syntax error, unexpected keyword_ensure, expecting ')'
+/Users/hyojeong/Development/code/todo-mvc-lv/app/views/items/_item_li.html.erb:43: syntax error, unexpected keyword_end, expecting ')'):
+  app/views/items/_item_li.html.erb:36: syntax error, unexpected ',', expecting ')'
+  app/views/items/_item_li.html.erb:39: syntax error, unexpected keyword_end, expecting ')'
+  app/views/items/_item_li.html.erb:41: syntax error, unexpected keyword_ensure, expecting ')'
+  app/views/items/_item_li.html.erb:43: syntax error, unexpected keyword_end, expecting ')'
+  app/views/lists/show.html.erb:57:in `_app_views_lists_show_html_erb___3428144174523395794_70261768740320'
+
+
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.7ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.2ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (104.5ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (81.3ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (181.8ms)
+
+
+Started GET "/lists/4" for ::1 at 2017-10-03 20:14:38 -0400
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mList Load (0.3ms)[0m  [1mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."list_id" = ?  [["list_id", 4]]
+  Rendered items/_item_li.html.erb (2.0ms)
+  Rendered lists/show.html.erb within layouts/application (7.7ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.5ms)
+
+SyntaxError (/Users/hyojeong/Development/code/todo-mvc-lv/app/views/items/_item_li.html.erb:36: syntax error, unexpected =>
+..., :method => :delete, class: => "destroy" );@output_buffer.s...
+...                               ^):
+  app/views/items/_item_li.html.erb:36: syntax error, unexpected =>
+  app/views/lists/show.html.erb:57:in `_app_views_lists_show_html_erb___3428144174523395794_70261768740320'
+
+
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.8ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.4ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.2ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (95.4ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (78.3ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (180.0ms)
+
+
+Started GET "/lists/4" for ::1 at 2017-10-03 20:15:05 -0400
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mList Load (0.3ms)[0m  [1mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."list_id" = ?  [["list_id", 4]]
+  Rendered items/_item_li.html.erb (2.2ms)
+  Rendered lists/show.html.erb within layouts/application (7.0ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.5ms)
+
+SyntaxError (/Users/hyojeong/Development/code/todo-mvc-lv/app/views/items/_item_li.html.erb:36: syntax error, unexpected =>
+..., :method => :delete, class: => "destroy" );@output_buffer.s...
+...                               ^):
+  app/views/items/_item_li.html.erb:36: syntax error, unexpected =>
+  app/views/lists/show.html.erb:57:in `_app_views_lists_show_html_erb___3428144174523395794_70261768740320'
+
+
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.6ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.7ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (96.3ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.9ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (75.8ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (173.4ms)
+
+
+Started GET "/lists/4" for ::1 at 2017-10-03 20:15:27 -0400
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mList Load (0.2ms)[0m  [1mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."list_id" = ?  [["list_id", 4]]
+  Rendered items/_item_li.html.erb (1.5ms)
+  Rendered lists/show.html.erb within layouts/application (6.4ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.3ms)
+
+SyntaxError (/Users/hyojeong/Development/code/todo-mvc-lv/app/views/items/_item_li.html.erb:36: syntax error, unexpected =>
+... :method => "delete", class: => "destroy" );@output_buffer.s...
+...                               ^):
+  app/views/items/_item_li.html.erb:36: syntax error, unexpected =>
+  app/views/lists/show.html.erb:57:in `_app_views_lists_show_html_erb___3428144174523395794_70261768740320'
+
+
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (10.8ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (7.7ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (95.7ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.8ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (72.6ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/hyojeong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (163.9ms)
+
+
+Started GET "/lists/4" for ::1 at 2017-10-03 20:15:53 -0400
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mList Load (0.1ms)[0m  [1mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."list_id" = ?  [["list_id", 4]]
+  Rendered items/_item_li.html.erb (3.7ms)
+  Rendered lists/show.html.erb within layouts/application (9.7ms)
+Completed 200 OK in 52ms (Views: 49.6ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/lists/4/items/7" for ::1 at 2017-10-03 20:15:56 -0400
+Processing by ItemsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"E8bbor6XoNetUqlSPrqneQDiDCjdcDulmBdSfoptWb7t3JrMk81hLL4KdJ3neSSGG30WR+qL2TXSWsh8ogRyxQ==", "list_id"=>"4", "id"=>"7"}
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", 7]]
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "items" WHERE "items"."id" = ?[0m  [["id", 7]]
+  [1m[35m (2.2ms)[0m  commit transaction
+  [1m[36mList Load (0.1ms)[0m  [1mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1[0m  [["id", 4]]
+Redirected to http://localhost:3000/lists/4
+Completed 302 Found in 12ms (ActiveRecord: 3.3ms)
+
+
+Started GET "/lists/4" for ::1 at 2017-10-03 20:15:56 -0400
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mList Load (0.1ms)[0m  SELECT  "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."list_id" = ?[0m  [["list_id", 4]]
+  Rendered items/_item_li.html.erb (0.0ms)
+  Rendered lists/show.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 32ms (Views: 29.3ms | ActiveRecord: 0.3ms)
